@@ -21,10 +21,11 @@ public class Song {
 
     private Song(){}
 
-    private Song(String name, LocalTime duration, String artist){
+    private Song(String name, LocalTime duration, String artist, SongGenre genre){
         this.name = name;
         this.duration = duration;
         this.artist = artist;
+        this.genre = genre;
     }
 
     public Long getId() {
@@ -57,6 +58,14 @@ public class Song {
 
     public String getArtist() {
         return artist;
+    }
+
+    public SongGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(SongGenre genre) {
+        this.genre = genre;
     }
 
 }
