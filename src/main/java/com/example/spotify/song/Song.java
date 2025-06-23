@@ -2,6 +2,7 @@ package com.example.spotify.song;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
@@ -13,6 +14,7 @@ public class Song {
     private String name;
     private LocalTime duration;
     private String artist;
+    private LocalDate release_date;
 
     @Enumerated(EnumType.STRING)
     private SongGenre genre;
@@ -21,10 +23,11 @@ public class Song {
 
     private Song(){}
 
-    private Song(String name, LocalTime duration, String artist, SongGenre genre){
+    private Song(String name, LocalTime duration, String artist, LocalDate release_date, SongGenre genre){
         this.name = name;
         this.duration = duration;
         this.artist = artist;
+        this.release_date = release_date;
         this.genre = genre;
     }
 
