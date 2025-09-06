@@ -63,6 +63,14 @@ public class Song {
         return artist;
     }
 
+    public LocalDate getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(LocalDate release_date) {
+        this.release_date = release_date;
+    }
+
     public SongGenre getGenre() {
         return genre;
     }

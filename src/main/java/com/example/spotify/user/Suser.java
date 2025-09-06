@@ -10,7 +10,10 @@ public class Suser {
     private Long id;
 
     private String nickname;
-    private Email email;
+
+    @Email
+    private String email;
+
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -18,7 +21,7 @@ public class Suser {
 
     private Suser(){}
 
-    private Suser(Long id, String nickname, Email email, String password, SuserType type){
+    private Suser(Long id, String nickname, String email, String password, SuserType type){
         this.id = id;
         this.nickname = nickname;
         this.email = email;
@@ -42,11 +45,11 @@ public class Suser {
         this.nickname = nickname;
     }
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
