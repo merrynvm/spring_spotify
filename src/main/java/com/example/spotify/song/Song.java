@@ -1,10 +1,12 @@
 package com.example.spotify.song;
 
 import com.example.spotify.album.Album;
+import com.example.spotify.playlist.Playlist;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 public class Song {
@@ -24,6 +26,11 @@ public class Song {
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;
+
+    //relazione con playlist
+    @ManyToMany
+    @JoinTable(name = "song_playlist", joinColumns = @JoinColumn(name = "song_id"), inverseJoinColumns = @JoinColumn(name = "playlist_id"))
+    private List<Playlist> playlists;
 
     private Song(){}
 
