@@ -82,7 +82,7 @@ public class Album {
         //TODO da finire metodo per calcolo automatico della durata dell'album
         for(Song t : songs){
             if(t.getDuration() != null){
-                //finalTime.plus();
+                finalTime = finalTime.plusSeconds(t.getDuration().getSecond());
             }
         }
     }
