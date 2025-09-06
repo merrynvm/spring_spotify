@@ -21,7 +21,7 @@ public class Suser {
 
     private Suser(){}
 
-    private Suser(Long id, String nickname, String email, String password, SuserType type){
+    public Suser(Long id, String nickname, String email, String password, SuserType type){
         this.id = id;
         this.nickname = nickname;
         this.email = email;

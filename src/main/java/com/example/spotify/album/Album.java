@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Entity
@@ -21,8 +20,10 @@ public class Album {
     private LocalTime duration;
     private SongGenre genre;
 
-    @OneToMany
+    @OneToMany(mappedBy = "album")
     private List<Song> songs;
+
+    private Album(){}
 
     public Album(Long id, String name, String artist, LocalDate release_date, List<Song> songs) {
         this.id = id;

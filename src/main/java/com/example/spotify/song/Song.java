@@ -1,5 +1,6 @@
 package com.example.spotify.song;
 
+import com.example.spotify.album.Album;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -20,10 +21,13 @@ public class Song {
     private SongGenre genre;
 
     //relazione con album
+    @ManyToOne
+    @JoinColumn(name = "album_id")
+    private Album album;
 
     private Song(){}
 
-    private Song(String name, LocalTime duration, String artist, LocalDate release_date, SongGenre genre){
+    public Song(String name, LocalTime duration, String artist, LocalDate release_date, SongGenre genre){
         this.name = name;
         this.duration = duration;
         this.artist = artist;
