@@ -11,3 +11,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+server:
+  port: 8080
+  servlet:
+    session:
+      # Così, a ogni riavvio dell'applicazione verranno invalidate tutte le sessioni
+      #(incluso il SecurityContext), e al prossimo F5 ti verrà richiesto di effettuare nuovamente il login.
+      persistent: false

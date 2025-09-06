@@ -20,13 +20,13 @@ public class Album {
     private LocalTime duration;
     private SongGenre genre;
 
+    //Relazione con Song
     @OneToMany(mappedBy = "album")
     private List<Song> songs;
 
     private Album(){}
 
-    public Album(Long id, String name, String artist, LocalDate release_date, List<Song> songs) {
-        this.id = id;
+    public Album(String name, String artist, LocalDate release_date, List<Song> songs) {
         this.name = name;
         this.artist = artist;
         this.release_date = release_date;

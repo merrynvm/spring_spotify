@@ -16,13 +16,13 @@ public class Playlist {
     private String owner;
     private LocalTime duration;
 
+    //relazione con Song
     @ManyToMany(mappedBy = "playlists")
     private List<Song> songs;
 
     private Playlist(){}
 
-    public Playlist(Long id, String name, String owner, LocalTime duration){
-        this.id = id;
+    public Playlist(String name, String owner, LocalTime duration){
         this.name = name;
         this.owner = owner;
         this.duration = duration;
