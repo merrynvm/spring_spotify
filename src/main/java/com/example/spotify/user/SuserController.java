@@ -12,7 +12,7 @@ import java.util.Optional;
 public class SuserController {
     @Autowired private SuserService suserService;
 
-    @GetMapping("/all-user")
+    @GetMapping("/all")
     public List<Suser> allUsers(){
         return suserService.allUsers();
     }
