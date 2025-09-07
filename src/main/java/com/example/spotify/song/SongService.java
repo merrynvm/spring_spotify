@@ -39,11 +39,6 @@ public class SongService {
     }
 
     public Optional<Song> updateById(Long id, Song updatedSong){
-        Optional<Song> songFound = songRepo.findById(id);
-
-        if(songFound.isEmpty()){
-            return Optional.empty();
-        }
 
         if(updatedSong.getName().isEmpty() || updatedSong.getDuration() == null || updatedSong.getArtist().isEmpty()
                 || updatedSong.getGenre() == null || updatedSong.getRelease_date() == null){
@@ -58,6 +53,8 @@ public class SongService {
             return Optional.empty();
         }
 
+        Optional<Song> songFound = songRepo.findById(id);
+
         songFound.get().setName(updatedSong.getName());
         songFound.get().setDuration(updatedSong.getDuration());
         songFound.get().setArtist(updatedSong.getArtist());
@@ -68,10 +65,6 @@ public class SongService {
     }
 
     public void deleteById(Long id){
-        if(songRepo.findById(id).isEmpty()){
-            return;
-        }
-
         songRepo.deleteById(id);
     }
 

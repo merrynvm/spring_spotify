@@ -28,11 +28,6 @@ public class SuserService {
     }
 
     public Optional<Suser> updateById(Long id, Suser updatedUser){
-        //se l`id inserito non esiste torna empty
-        if(suserRepo.findById(id).isEmpty()){
-            return Optional.empty();
-        }
-
         //se i campi da aggiornare sono assenti ritorna empty
         if(updatedUser.getEmail().isEmpty() && updatedUser.getNickname().isEmpty() && updatedUser.getPassword().isEmpty() && updatedUser.getType() == null){
             return Optional.empty();
@@ -52,10 +47,6 @@ public class SuserService {
     }
 
     public void deleteById(Long id){
-        if(suserRepo.findById(id).isEmpty()){
-          return;
-        }
-
         suserRepo.deleteById(id);
     }
 
