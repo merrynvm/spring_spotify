@@ -27,7 +27,7 @@ public class SongService {
 
         Optional<Suser> suserFound = suserRepo.findByNickname(newSong.getArtist());
 
-        if(suserFound.isEmpty() && suserFound.get().getType().equals(SuserType.USER)){
+        if(suserFound.isEmpty() || suserFound.get().getType().equals(SuserType.USER)){
             return Optional.empty();
         }
 
@@ -54,7 +54,7 @@ public class SongService {
 
         Optional<Suser> suserFound = suserRepo.findByNickname(updatedSong.getArtist());
 
-        if(suserFound.isEmpty() && suserFound.get().getType().equals(SuserType.USER)){
+        if(suserFound.isEmpty() || suserFound.get().getType().equals(SuserType.USER)){
             return Optional.empty();
         }
 
