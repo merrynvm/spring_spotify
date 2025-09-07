@@ -51,13 +51,12 @@ public class SuserService {
 
     }
 
-    public boolean deleteById(Long id){
+    public void deleteById(Long id){
         if(suserRepo.findById(id).isEmpty()){
-          return false;
+          return;
         }
 
         suserRepo.deleteById(id);
-        return true;
     }
 
 }
