@@ -4,7 +4,7 @@ import com.example.spotify.song.Song;
 import com.example.spotify.user.Suser;
 import jakarta.persistence.*;
 
-import java.time.LocalTime;
+import java.sql.Time;
 import java.util.List;
 
 @Entity
@@ -15,7 +15,7 @@ public class Playlist {
 
     private String name;
     private String owner;
-    private LocalTime duration;
+    private Time duration;
 
     //relazione con Song
     @ManyToMany(mappedBy = "playlists")
@@ -27,7 +27,7 @@ public class Playlist {
 
     private Playlist(){}
 
-    public Playlist(String name, String owner, LocalTime duration){
+    public Playlist(String name, String owner, Time duration){
         this.name = name;
         this.owner = owner;
         this.duration = duration;
@@ -57,12 +57,12 @@ public class Playlist {
         this.owner = owner;
     }
 
-    public LocalTime getDuration() {
+    public Time getDuration() {
         return duration;
     }
 
-    public void setDuration(LocalTime duration) {
-        this.duration = duration;
+    public void setDuration(String duration) {
+        this.duration = Time.valueOf(duration);
     }
 
 }
