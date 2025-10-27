@@ -1,7 +1,10 @@
 package com.example.spotify.user;
 
+import com.example.spotify.playlist.Playlist;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+
+import java.util.List;
 
 @Entity
 public class Suser {
@@ -18,6 +21,9 @@ public class Suser {
 
     @Enumerated(EnumType.STRING)
     private SuserType type;
+
+    @ManyToMany(mappedBy = "susers")
+    private List<Playlist> playlists;
 
     private Suser(){}
 

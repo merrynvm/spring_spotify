@@ -1,6 +1,7 @@
 package com.example.spotify.playlist;
 
 import com.example.spotify.song.Song;
+import com.example.spotify.user.Suser;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
@@ -19,6 +20,10 @@ public class Playlist {
     //relazione con Song
     @ManyToMany(mappedBy = "playlists")
     private List<Song> songs;
+
+    @ManyToMany
+    @JoinTable(name = "suser_playlists", joinColumns = @JoinColumn(name = "playlist_id"), inverseJoinColumns = @JoinColumn(name = "suser_id"))
+    private List<Suser> susers;
 
     private Playlist(){}
 
