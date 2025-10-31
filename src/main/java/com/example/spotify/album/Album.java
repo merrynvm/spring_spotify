@@ -2,11 +2,12 @@ package com.example.spotify.album;
 
 import com.example.spotify.song.Song;
 import com.example.spotify.song.SongGenre;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,15 +23,17 @@ public class Album {
     private SongGenre genre;
 
     //Relazione con Song
-    @OneToMany(mappedBy = "album")
-    private List<Song> songs;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonManagedReference //Proprietà “padre” (lista) = Viene serializzata
+    private List<Song> songs = new ArrayList<>();
 
     private Album(){}
 
-    public Album(String name, String artist, LocalDate release_date, List<Song> songs) {
+    public Album(String name, String artist, LocalDate release_date, SongGenre genre, List<Song> songs) {
         this.name = name;
         this.artist = artist;
         this.release_date = release_date;
+        this.genre = genre;
         this.songs = songs;
     }
 
@@ -66,6 +69,14 @@ public class Album {
         this.release_date = release_date;
     }
 
+    public SongGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(SongGenre genre) {
+        this.genre = genre;
+    }
+
     public List<Song> getSongs() {
         return songs;
     }
@@ -91,19 +102,6 @@ public class Album {
 //                finalTime = finalTime.valueOf(t.getDuration().toString());
 //            }
 //        }
-    }
-
-    public SongGenre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(SongGenre genre) {
-        for(Song g : songs){
-            if(g.getGenre() != null){
-                this.genre = g.getGenre();
-                break;
-            }
-        }
     }
 
 }

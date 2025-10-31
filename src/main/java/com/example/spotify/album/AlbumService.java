@@ -1,5 +1,6 @@
 package com.example.spotify.album;
 
+import com.example.spotify.song.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,10 @@ public class AlbumService {
     public Optional<Album> createAlbum(Album newAlbum){
         if(newAlbum.getName().isEmpty() || newAlbum.getArtist().isEmpty() || newAlbum.getGenre() == null || newAlbum.getRelease_date() == null){
             return Optional.empty();
+        }
+
+        for (Song s : newAlbum.getSongs()) {
+            s.setAlbum(newAlbum);   // relaziona ogni song all'album
         }
 
         return Optional.of(albumRepo.save(newAlbum));

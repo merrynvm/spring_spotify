@@ -2,6 +2,7 @@ package com.example.spotify.song;
 
 import com.example.spotify.album.Album;
 import com.example.spotify.playlist.Playlist;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.sql.Time;
@@ -25,6 +26,7 @@ public class Song {
     //relazione con album
     @ManyToOne
     @JoinColumn(name = "album_id")
+    @JsonBackReference //Proprietà “figlio” (singolo) = Non viene serializzata
     private Album album;
 
     //relazione con playlist
@@ -88,6 +90,14 @@ public class Song {
 
     public void setGenre(SongGenre genre) {
         this.genre = genre;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
 }
