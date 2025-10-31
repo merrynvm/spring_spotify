@@ -4,8 +4,8 @@ import com.example.spotify.album.Album;
 import com.example.spotify.playlist.Playlist;
 import jakarta.persistence.*;
 
+import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -15,7 +15,7 @@ public class Song {
     private Long id;
 
     private String name;
-    private LocalTime duration;
+    private Time duration;
     private String artist;
     private LocalDate release_date;
 
@@ -34,7 +34,7 @@ public class Song {
 
     private Song(){}
 
-    public Song(String name, LocalTime duration, String artist, LocalDate release_date, SongGenre genre){
+    public Song(String name, Time duration, String artist, LocalDate release_date, SongGenre genre){
         this.name = name;
         this.duration = duration;
         this.artist = artist;
@@ -58,11 +58,11 @@ public class Song {
         this.name = name;
     }
 
-    public void setDuration(LocalTime duration) {
-        this.duration = duration;
+    public void setDuration(String duration) {
+        this.duration = Time.valueOf(duration);
     }
 
-    public LocalTime getDuration() {
+    public Time getDuration() {
         return duration;
     }
 

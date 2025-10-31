@@ -85,7 +85,7 @@ public class Album {
         for(Song t : songs){
             if(t.getDuration() != null){
                 //finalTime = finalTime.plusSeconds(t.getDuration().getSecond());
-                finalTime = finalTime.valueOf(t.getDuration());
+                finalTime = finalTime.valueOf(t.getDuration().toString());
             }
         }
     }

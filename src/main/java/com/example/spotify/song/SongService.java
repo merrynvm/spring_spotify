@@ -56,7 +56,7 @@ public class SongService {
         Optional<Song> songFound = songRepo.findById(id);
 
         songFound.get().setName(updatedSong.getName());
-        songFound.get().setDuration(updatedSong.getDuration());
+        songFound.get().setDuration(updatedSong.getDuration().toString());
         songFound.get().setArtist(updatedSong.getArtist());
         songFound.get().setGenre(updatedSong.getGenre());
         songFound.get().setRelease_date(updatedSong.getRelease_date());
