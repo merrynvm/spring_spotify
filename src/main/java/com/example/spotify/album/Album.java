@@ -4,6 +4,7 @@ import com.example.spotify.song.Song;
 import com.example.spotify.song.SongGenre;
 import jakarta.persistence.*;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Album {
     private String name;
     private String artist;
     private LocalDate release_date;
-    private LocalTime duration;
+    private Time duration;
     private SongGenre genre;
 
     //Relazione con Song
@@ -73,17 +74,18 @@ public class Album {
         this.songs = songs;
     }
 
-    public LocalTime getDuration() {
+    public Time getDuration() {
         return duration;
     }
 
-    public void setDuration(LocalTime duration) {
-        LocalTime finalTime = LocalTime.of(0,0,0);
+    public void setDuration(Time duration) {
+        Time finalTime = Time.valueOf("0");
 
         //TODO da finire metodo per calcolo automatico della durata dell'album
         for(Song t : songs){
             if(t.getDuration() != null){
-                finalTime = finalTime.plusSeconds(t.getDuration().getSecond());
+                //finalTime = finalTime.plusSeconds(t.getDuration().getSecond());
+                finalTime = finalTime.valueOf(t.getDuration());
             }
         }
     }
