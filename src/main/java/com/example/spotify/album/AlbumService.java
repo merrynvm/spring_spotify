@@ -39,7 +39,7 @@ public class AlbumService {
 
         albumFound.get().setId(id);
         albumFound.get().setArtist(albumToUpdate.getArtist());
-        albumFound.get().setDuration(albumToUpdate.getDuration());
+        albumFound.get().setDuration(albumToUpdate.getDuration().toString());
         albumFound.get().setGenre(albumToUpdate.getGenre());
         albumFound.get().setRelease_date(albumToUpdate.getRelease_date());
         albumFound.get().setName(albumToUpdate.getName());

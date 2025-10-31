@@ -78,16 +78,19 @@ public class Album {
         return duration;
     }
 
-    public void setDuration(Time duration) {
-        Time finalTime = Time.valueOf("0");
+    public void setDuration(String duration) {
+        this.duration = Time.valueOf(duration);
 
-        //TODO da finire metodo per calcolo automatico della durata dell'album
-        for(Song t : songs){
-            if(t.getDuration() != null){
-                //finalTime = finalTime.plusSeconds(t.getDuration().getSecond());
-                finalTime = finalTime.valueOf(t.getDuration().toString());
-            }
-        }
+//       Time finalTime = Time.valueOf("0");
+//
+//      TODO da finire metodo per calcolo automatico della durata dell'album
+//
+//        for(Song t : songs){
+//            if(t.getDuration() != null){
+//                finalTime = finalTime.plusSeconds(t.getDuration().getSecond());
+//                finalTime = finalTime.valueOf(t.getDuration().toString());
+//            }
+//        }
     }
 
     public SongGenre getGenre() {
